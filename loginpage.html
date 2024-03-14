@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login Form </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('444.png');
+}
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+}
+.box {
+    position: relative;
+    width: 380px;
+    min-height: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.box::before,
+.box::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 600px; 
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    background: linear-gradient(0deg, transparent, rgb(85, 85, 148), rgb(107, 107, 167), rgb(97, 97, 163));
+}
+.box::after {
+    animation-delay: -3s;
+}
+.box__borderline {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+.box__borderline::before,
+.box__borderline::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 600px;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    z-index: 1;
+    background: linear-gradient(0deg, transparent, rgb(194, 186, 186), rgb(180, 180, 180), rgb(190, 189, 189));
+}
+.box__borderline::before {
+    animation-delay: -1.5s;
+}
+.box__borderline::after {
+    animation-delay: -4.5s;
+}
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+   }
+    100% {
+        transform: rotate(360deg);
+   }
+}
+.form {
+    position: absolute;
+    inset: 4px;
+    background-color: rgb(51, 51, 51);
+    padding: 50px 40px 80px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+.form__title {
+    color: #fff;
+    text-align: center;
+}
+.form__box {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+.form__input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #23242a;
+    transition: 0.3s;
+    z-index: 10;
+}
+.form__input:valid ~ .form__span,
+.form__input:focus ~ .form__span {
+    color: #fff;
+    font-size: 0.75em;
+    transform: translateY(-34px);
+}
+.form__input:valid ~ .form__line,
+.form__input:focus ~ .form__line {
+    height: 44px;
+}
+.form__span {
+    position: absolute;
+    left: 0;
+    padding: 20px 0 10px;
+    pointer-events: none;
+    color: #8f8f8f;
+    font-size: 1em;
+    transition: 0.3s;
+}
+.form__line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.3s;
+    pointer-events: none;
+}
+.form__links {
+    display: flex;
+    justify-content: space-between;
+}
+.form__link {
+    margin: 10px 0;
+    font-size: 0.75em;
+    color: #8f8f8f;
+    text-decoration: none;
+}
+.form__link:hover,
+.form__link:nth-child(2) {
+    color: #fff;
+}
+.form__submit {
+    color: #000;
+}
+.form__submit[type="submit"] {
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 9px 25px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+
+.form__captcha-container {
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.form__input--captcha {
+    width: 70%; 
+    margin: 10px auto; 
+}
+
+.form__span--captcha {
+    display: block;
+    width: 70%; 
+    margin: 10px auto;
+    text-align: center; 
+    background-color: #fff;
+    padding: 10px; 
+    border-radius: 5px; 
+    color: #000; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+}
+
+    </style>
+  
+</head>
+<body>
+
+<div class="box">
+    <span class="box__borderline"></span>
+  
+    <form class="form" action="#" onsubmit="return validateForm()">
+      <h2 class="form__title">SIGN UP</h2>
+  
+      <div class="form__box">
+        <input class="form__input" type="text" id="username" required="required">
+        <span class="form__span">Username</span>
+        <i class="form__line"></i>
+      </div>
+
+      <div class="form__box">
+        <input class="form__input" type="text" id="age" required="required">
+        <span class="form__span">Age</span>
+        <i class="form__line"></i>
+      </div>
+  
+      <div class="form__box">
+        <input class="form__input" type="text" id="phoneNumber" required="required">
+        <span class="form__span">Phone Number</span>
+        <i class="form__line"></i>
+      </div>
+
+      <div class="form__box">
+        <input class="form__input" type="text" id="email" required="required">
+        <span class="form__span">Email Id</span>
+        <i class="form__line"></i>
+      </div>
+
+      <!-- Captcha -->
+      <div class="form__captcha-container">
+        <span id="captchaDisplay" class="form__span form__span--captcha"></span>
+      </div>
+      
+      <br><br><br>
+
+      <div class="form__box">
+        <input class="form__input" type="text" id="captchaInput" required="required">
+        <span class="form__span">Enter Captcha</span>
+        <i class="form__line"></i>
+      </div>
+
+      <br><br>
+      <input class="form__submit" type="submit" value="Create Account"  style="font-family:'Times New Roman', Times, serif; font-weight: bold;">
+    </form>
+  
+  </div>
+
+<script>
+// Generate a random captcha containing alphabets and numbers
+function generateCaptcha() {
+  const captchaLength = 6;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@!&%$?';
+  let captcha = '';
+  for (let i = 0; i < captchaLength; i++) {
+    captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  document.getElementById('captchaDisplay').textContent = captcha;
+}
+
+// Validate the entered captcha
+function validateForm() {
+  const captcha = document.getElementById('captchaDisplay').textContent;
+  const userInput = document.getElementById('captchaInput').value;
+
+  if (userInput !== captcha) {
+    alert('Captcha is incorrect!');
+    generateCaptcha(); // Regenerate captcha
+    return false; // Prevent form submission
+  }
+
+  // Validate phone number
+  const phoneNumber = document.getElementById('phoneNumber').value;
+  if (!phoneNumber.startsWith('+91 ') || phoneNumber.length !== 14) {
+    alert('Phone number is invalid! It should start with "+91 " and have 10 digits.');
+    return false; // Prevent form submission
+  }
+
+  // Validate age
+  const age = parseInt(document.getElementById('age').value);
+  if (age <= 18) {
+    alert('Age should be more than 18.');
+    return false; // Prevent form submission
+  }
+
+  // Validate email
+  const email = document.getElementById('email').value;
+  if (!email.includes('@')) {
+    alert('Email is invalid! It should contain "@" symbol.');
+    return false; // Prevent form submission
+  }
+
+  // If all validations pass, allow form submission
+  return true;
+}
+
+// Generate captcha on page load
+window.onload = generateCaptcha;
+</script>
+
+</body>
+</html>
